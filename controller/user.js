@@ -9,7 +9,7 @@ try {
 
     let user = await User.findOne({email})
 
-    if(!user) return next(new ErrorHandler("User Already Exist",404))
+    if(user) return next(new ErrorHandler("User Already Exist",404))
 
     const hashedPassword = await bcrypt.hash(password,10)
 
